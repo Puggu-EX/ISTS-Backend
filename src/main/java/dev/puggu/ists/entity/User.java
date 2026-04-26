@@ -1,5 +1,6 @@
 package dev.puggu.ists.entity;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -17,17 +18,22 @@ public abstract class User {
 
     @Id
     @UuidGenerator
-    @NonNull
+    @Nonnull
     @Column(name = "user_id")
     private UUID userID;
 
-    @NonNull
+    @Nonnull
     private String firstName;
-    @NonNull
+
+    @Nonnull
     private String lastName;
 
-    @NonNull
+    @Nonnull
     private String email;
-    @NonNull
+
+    @Nonnull
     private String password;
+
+    @Nonnull
+    private String status;
 }
