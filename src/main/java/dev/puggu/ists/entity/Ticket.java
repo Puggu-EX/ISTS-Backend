@@ -17,32 +17,32 @@ public class Ticket {
     @Id
     @UuidGenerator
     @Column(name = "ticket_id")
-    @NonNull
+    @Setter(AccessLevel.NONE)
+    @Nonnull
     private UUID ticketID;
 
-    @NonNull
+    @Nonnull
     private UUID author;
 
-    @NonNull
+    @Nonnull
     private String title;
 
-    @NonNull
+    @Nonnull
     private String description;
 
     private int escalationLevel; // Also Enum? at least set a min-max
     private int priority;
 
-    @NonNull
+    @Nonnull
     private String status; // Enum?
 
-    @NonNull
+    @Nonnull
     private String tags; // Enum?
 
     // Required Timeline
-    @NonNull
+    @Nonnull
     private LocalDate dateSubmitted;
     private LocalDate dateOpened;
     private LocalDate dateAddressed;
     private LocalDate dateSolved;
-
 }
