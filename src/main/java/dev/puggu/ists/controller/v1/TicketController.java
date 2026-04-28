@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/v1/tickets")
+@RequestMapping("api/v1/tickets")
+@AllArgsConstructor
 public class TicketController {
 }

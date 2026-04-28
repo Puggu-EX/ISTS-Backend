@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/v1/users")
+@RequestMapping("api/v1/users")
 @AllArgsConstructor
 public class UserController {
     public final StandardUserService standardUserService;
