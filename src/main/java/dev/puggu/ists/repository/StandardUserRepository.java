@@ -1,6 +1,6 @@
 package dev.puggu.ists.repository;
 
-import dev.puggu.ists.entity.StandardUser;
+import dev.puggu.ists.entity.Users.StandardUser;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 

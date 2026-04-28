@@ -3,7 +3,7 @@ package dev.puggu.ists.service;
 import dev.puggu.ists.controller.dto.request.UserLogin;
 import dev.puggu.ists.controller.dto.request.UserRegister;
 import dev.puggu.ists.controller.dto.response.GenericResponse;
-import dev.puggu.ists.entity.StandardUser;
+import dev.puggu.ists.entity.Users.StandardUser;
 import dev.puggu.ists.repository.StandardUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

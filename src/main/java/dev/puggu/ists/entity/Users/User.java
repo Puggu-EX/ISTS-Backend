@@ -1,4 +1,4 @@
-package dev.puggu.ists.entity;
+package dev.puggu.ists.entity.Users;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;

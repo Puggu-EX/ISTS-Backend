@@ -1,17 +1,15 @@
-package dev.puggu.ists.entity;
+package dev.puggu.ists.entity.Users;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Entity
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StandardUser extends User {
-    private String department; // Enum?
+public class Technician extends User {
+    private int level;
 }
