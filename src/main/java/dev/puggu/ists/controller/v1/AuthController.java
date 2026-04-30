@@ -1,9 +1,7 @@
 package dev.puggu.ists.controller.v1;
 
 import dev.puggu.ists.controller.dto.request.UserLogin;
-import dev.puggu.ists.controller.dto.request.UserRegister;
-import dev.puggu.ists.service.StandardUserService;
-import dev.puggu.ists.service.TechnicianService;
+import dev.puggu.ists.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AuthController {
 
-    public final StandardUserService standardUserService;
-    public final TechnicianService technicianService;
+    public final UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody UserLogin userLoginRequest) {
-        return standardUserService.login(userLoginRequest);
+        return userService.login(userLoginRequest);
     }
 
 //    @PostMapping("/logout")
 //    public ResponseEntity<?> logout(@Valid @RequestBody UserLogin userLoginRequest) {
-//        return standardUserService.login(userLoginRequest);
+//        return UserService.login(userLoginRequest);
 //    }
 }

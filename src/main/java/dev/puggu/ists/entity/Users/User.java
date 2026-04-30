@@ -2,19 +2,19 @@ package dev.puggu.ists.entity.Users;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
 
-@MappedSuperclass
+@Entity
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class User {
+public class User {
 
     @Id
     @UuidGenerator
@@ -36,4 +36,7 @@ public abstract class User {
 
     @Nonnull
     private String status;
+
+    @Nonnull
+    private String role;
 }

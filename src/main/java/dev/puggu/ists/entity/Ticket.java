@@ -28,7 +28,7 @@ public class Ticket {
     private String title;
 
     @Nonnull
-    private String description;
+    private String details;
 
     private int escalationLevel; // Also Enum? at least set a min-max
     private int priority;

@@ -1,9 +1,10 @@
 package dev.puggu.ists.service;
 
+import dev.puggu.ists.controller.dto.request.UserLogin;
 import dev.puggu.ists.controller.dto.request.UserRegister;
 import dev.puggu.ists.controller.dto.response.GenericResponse;
-import dev.puggu.ists.entity.Users.StandardUser;
-import dev.puggu.ists.repository.StandardUserRepository;
+import dev.puggu.ists.entity.Users.User;
+import dev.puggu.ists.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @AllArgsConstructor
 public class UserService {
-    private final StandardUserRepository standardUserRepo;
+    private final UserRepository userRepo;
 
     /**
-     * Standard User register service
+     *  User register service
      * @param request UserRegister body
      * @return response entity
      */
     public ResponseEntity<?> register(UserRegister request) {
         // Validate unique email
-        if (standardUserRepo.existsByEmail(request.email())) {
+        if (userRepo.existsByEmail(request.email())) {
             return GenericResponse.build(HttpStatus.BAD_REQUEST, "User with this email already exists");
         }
 
@@ -35,18 +36,34 @@ public class UserService {
          }
          */
 
-        StandardUser standardUser = new StandardUser();
-        standardUser.setFirstName(request.first_name());
-        standardUser.setLastName(request.last_name());
-        standardUser.setEmail(request.email());
-        standardUser.setPassword(request.password());
+        User User = new User();
+        User.setFirstName(request.first_name());
+        User.setLastName(request.last_name());
+        User.setEmail(request.email());
+        User.setPassword(request.password());
+        User.setRole("ROLE_USER");
 
-        standardUserRepo.save(standardUser);
+        userRepo.save(User);
 
         return GenericResponse.build(HttpStatus.OK, "Successfully created user");
     }
 
-    public StandardUser getUserByEmail(String email) {
-        return standardUserRepo.findByEmail(email).orElse(null);
+    public ResponseEntity<?> login(UserLogin request) {
+        User standardUser = getUserByEmail(request.email());
+
+        if (standardUser == null)
+            return GenericResponse.build(HttpStatus.BAD_REQUEST, "Error: Incorrect email or password");
+
+        String password = standardUser.getPassword();
+
+        if (password.equals(request.password())) {
+            return GenericResponse.build(HttpStatus.OK, "Successfully logged in");
+        }
+
+       return GenericResponse.build(HttpStatus.BAD_REQUEST, "Error: Incorrect email or password");
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepo.findByEmail(email).orElse(null);
     }
 }

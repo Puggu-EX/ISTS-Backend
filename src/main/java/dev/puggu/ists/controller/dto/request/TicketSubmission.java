@@ -6,7 +6,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 public record TicketSubmission(
      @NotBlank String author,
      @NotBlank  String title,
-     @NotBlank  String description,
+     @NotBlank  String details,
      @PositiveOrZero int priority,
      String tag
 ) { }
